@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Moon-Miner</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+
+<body class="bg-nebula">
+
+    <header>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="shop-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!-- TODO ADD BG-SHOP HERE -->
+                <div class="modal-content bg-shop">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Shop</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <!-- TODO ADD SHOP CLASS HERE -->
+                            <!-- <div id="shop" class="row">
+                            
+                        </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div id='shop-cheese'></div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row fixed-top">
+                <!-- Button trigger modal -->
+                <!-- TODO SHOW SHOP MODAL -->
+                <div class="col-3 offset-6 bg-panel">
+                    <button type="button" class="col-3 btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#shop-modal">
+                        Shop
+                    </button>
+                    <div id="stats" class="row" data-toggle="collapse"></div>
+                    <div class="row justify-content-center p-3" data-toggle="collapse" data-target="#stats">
+                        <!-- TODO SWAP CURRENT CHEESE -->
+                        <div class="col-12">Cheese</div>
+                        <div id="current-cheese" class="col-12"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="row justify-content-center align-items-center">
+            <div class="moon-container h-100 col-10 ">
+                <div class="row">
+                    <img class="moon col" src="./assets/img/cheese-moon.gif"
+                        onclick="app.cheeseController.getCheese('clicker')">
+                    <div id="swiss" class="moon-stats fancy-border p-3 col-4 mt-5">
+                        <div class="row justify-content-start h-100">
+                            <div class="col-12">
+                                <div class="row fancy-border">
+                                    <div class="col">
+                                        <h4>Cheese</h4>
+                                    </div>
+                                    <span id="current-cheese" class="col"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <h4>Miners</h4>
+                                <div class="row p-1" id="stats">
+                                    <div class="col border border-light">
+                                        miner name : 0 : cpm
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ------------------------------------------------------------SHOP------------------------------------ -->
+                            <div class="col-12 d-flex align-self-end justify-content-center p-2">
+                                <div class="row justify-content-around" id="shop">
+                                    <button class="col-3 btn btn-light"
+                                        onclick="app.cheeseController.upgradeMiner('clicker')">Clicker</button>
+                                    <button class="col-3 btn btn-light"
+                                        onclick="app.cheeseController.upgradeMiner('astronaut')">Astronaut</button>
+                                    <button class="col-3 btn btn-light"
+                                        onclick="app.cheeseController.upgradeMiner('drill')">Drill</button>
+                                    <button class="col-3 btn btn-light"
+                                        onclick="app.cheeseController.upgradeMiner('refiner')">Refiner</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script type="module" src="./app/main.js"></script>
+    <!-- TODO CDN SWEETALERT2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+
+</html>
