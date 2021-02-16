@@ -11,8 +11,9 @@ function _draw() {
 function drawScore() {
   let scoreBoard = document.getElementById("current-cheese")
   scoreBoard.innerHTML = `${ProxyState.cheese.toFixed(2)}`
-  // TODO ADD CHEESE COUNT TO SHOP
-  document.querySelector('#shop-cheese').innerHTML = "Cheese: " + `${ProxyState.cheese.toFixed(2)}`
+  let scoreBoard2 = document.getElementById("current-cheese-2")
+  scoreBoard2.innerHTML = `${ProxyState.cheese.toFixed(2)}`
+
 }
 function drawShop() {
   let shop = document.getElementById("shop")
@@ -42,26 +43,15 @@ export default class CheeseController {
     this.CheeseInterval()
     ProxyState.on("cheese", _draw);
 
-    // swal.fire({
-    //   toast: true,
-    //   icon: "success",
-    //   showConfirmButton: false,
-    //   title: "Hi there",
-    //   position: "top-right",
-    //   timer: 5000,
-    //   timerProgressBar: true
-
-    // })
   }
 
   getCheese(method) {
     cheeseService.getCheese(method)
+
   }
 
   CheeseInterval() {
     setInterval(this.autoMiner, 1000)
-    // TODO ACHIEVEMENT INTERVAL
-    setInterval(this.checkAchievements, 3000)
   }
 
   autoMiner() {
@@ -73,30 +63,34 @@ export default class CheeseController {
     // console.log(currentCheese)
   }
 
-  checkAchievements() {
-    for (let a in ProxyState.achievements) {
-      let achieve = ProxyState.achievements[a]
-      if (!achieve.unlocked) {
-        if (achieve.requirements == ProxyState[achieve.requirements]) {
-          swal.fire({
-            toast: true,
-            icon: "success",
-            showConfirmButton: false,
-            title: achieve.title,
-            text: achieve.comment,
-            position: "center",
-            timer: 5000,
-            timerProgressBar: true
-          })
-          achieve.unlocked = true
-        }
-      }
-    }
-  }
+
 
   upgradeMiner(choice) {
+    debugger
     let miner = ProxyState.miners[choice]
-    cheeseService.upgradeMiner(miner)
+    if (miner.upgradeCost <= ProxyState.cheese) {
+      cheeseService.upgradeMiner(miner)
+      swal.fire({
+        title: miner.name + " purchased",
+        toast: true,
+        imageUrl: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1200-80.jpg",
+        showConfirmButton: false,
+        position: "top-right",
+        timer: 3000,
+        timerProgressBar: true
+      })
+    } else {
+      swal.fire({
+        title: "couldn't purchase " + miner.name + " not enough cheese fool",
+        toast: true,
+        icon: "error",
+        showConfirmButton: false,
+        position: "top-right",
+        timer: 3000,
+        timerProgressBar: true
+
+      })
+    }
   }
 
 
